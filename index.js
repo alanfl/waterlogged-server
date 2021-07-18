@@ -34,6 +34,20 @@ app.post('/hello/', (req, resp) => {
     );
 });
 
+app.get('/log', (req, resp) => {
+    let date = new Date(req.body.date);
+
+    // Send no data for dates in the future
+    if (date > Date.now()) {
+        resp.send(null);
+        return;
+    }
+
+    conn.query(
+        "SELECT * FROM water_log WHERE"
+    );
+});
+
 app.listen(10000, () => {
     console.log("Now listening on port 10000.");
 });
